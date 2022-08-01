@@ -23,8 +23,8 @@
           <h2>Vardas</h2>
         </div>
       </div>
-      <dic class="row mt-4">
-        <div class="col-12 col-sm-8">
+      <div class="row mt-4">
+        <div class="col-12 col-sm-10">
           <div class="form-floating mb-3 text-dark">
             <input
               type="text"
@@ -35,16 +35,56 @@
             <label for="floatingInput">Task</label>
           </div>
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-sm-2">
           <button
-            class="btn btn-success btn-lg"
+            class="btn btn-success btn-sm"
             type="submit"
-            style="--bs-btn-padding-y: 0.75rem"
+            style="height: 56px"
           >
-            Add To The List
+            Add To List
           </button>
         </div>
-      </dic>
+      </div>
+      <div class="container bg-success">
+        <div class="row text-light">
+          <h1>My tasks:</h1>
+          <ul class="list-group-flush">
+            <li class="list-group-item">
+              <input
+                class="form-check-input me-1"
+                type="checkbox"
+                value=""
+                id="firstCheckbox"
+              />
+              <label class="form-check-label" for="firstCheckbox"
+                >First checkbox</label
+              >
+            </li>
+            <li class="list-group-item">
+              <input
+                class="form-check-input me-1"
+                type="checkbox"
+                value=""
+                id="secondCheckbox"
+              />
+              <label class="form-check-label" for="secondCheckbox"
+                >Second checkbox</label
+              >
+            </li>
+            <li class="list-group-item">
+              <input
+                class="form-check-input me-1"
+                type="checkbox"
+                value=""
+                id="thirdCheckbox"
+              />
+              <label class="form-check-label" for="thirdCheckbox"
+                >Third checkbox</label
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- JavaScript Bundle with Popper -->
