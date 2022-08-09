@@ -14,84 +14,60 @@
     <title>My To Do List</title>
   </head>
   <body>
-    <div class="container bg-light text-success">
-      <div class="row">
-        <div class="col-10">
-          <h2>To Do List</h2>
-        </div>
-        <div class="col">
-          <h2>Vardas</h2>
+    <header class="bg-dark">
+      <div class="container">
+        <div class="row text-light">
+          <div class="col-10">
+            <h2>To Do List For</h2>
+          </div>
+          <div class="col">
+            <h2>Urte</h2>
+          </div>
         </div>
       </div>
+    </header>
+
+    <main class="container bg-light">
       <div class="row mt-4">
         <div class="col-12 col-sm-10">
-          <div class="form-floating mb-3 text-dark">
+          <div class="form-floating">
             <input
               type="text"
               class="form-control"
-              id="floatingInput"
+              id="taskInput"
               placeholder="Task To Do"
             />
-            <label for="floatingInput">Task</label>
+            <label for=" taskInput" style="left: 5px">Task</label>
           </div>
         </div>
         <div class="col-12 col-sm-2">
           <button
-            class="btn btn-success btn-sm"
-            type="submit"
+            class="btn btn-success"
+            type="button"
             style="height: 56px"
+            id="addBtn"
           >
             Add To List
           </button>
         </div>
       </div>
-      <div class="container bg-success">
-        <div class="row text-light">
-          <h1>My tasks:</h1>
-          <ul class="list-group-flush">
-            <li class="list-group-item">
-              <input
-                class="form-check-input me-1"
-                type="checkbox"
-                value=""
-                id="firstCheckbox"
-              />
-              <label class="form-check-label" for="firstCheckbox"
-                >First checkbox</label
-              >
-            </li>
-            <li class="list-group-item">
-              <input
-                class="form-check-input me-1"
-                type="checkbox"
-                value=""
-                id="secondCheckbox"
-              />
-              <label class="form-check-label" for="secondCheckbox"
-                >Second checkbox</label
-              >
-            </li>
-            <li class="list-group-item">
-              <input
-                class="form-check-input me-1"
-                type="checkbox"
-                value=""
-                id="thirdCheckbox"
-              />
-              <label class="form-check-label" for="thirdCheckbox"
-                >Third checkbox</label
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
 
-    <!-- JavaScript Bundle with Popper -->
+      <h1 class="row bg-success text-light bg-success my-3 pb-2 px-3">
+        My tasks:
+      </h1>
+      <div class="row mx-auto">
+        <ul class="list-group list-group-flush" id="tasksList"></ul>
+      </div>
+    </main>
+
+    <!-- bootsrapt JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <!-- main JS -->
+
+    <script src="index.js"></script>
   </body>
 </html>
