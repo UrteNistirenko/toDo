@@ -16,6 +16,9 @@
 //     task: "make bread",
 //   },
 // ];
+
+let sortByName = false;
+let sortByStartTime = false;
 const addTask = () => {
   const inputValue = document.getElementById("taskInput").value;
   const input = document.getElementById("taskInput");
@@ -58,6 +61,14 @@ const drawTasksList = () => {
 
   const lsArr = JSON.parse(window.localStorage.getItem("tasks"));
   let arr = lsArr ? lsArr : [];
+
+  if (sortByName) {
+    arr.sort((a, b) => (a.task > b.task ? 1 : b.task > a.task ? -1 : 0));
+  }
+
+  if (sortByStartTime) {
+    arr.sort((b, a) => (a.id > b.id ? 1 : b.id > a.id ? -1 : 0));
+  }
 
   arr.forEach((value, ind) => {
     // created elements
@@ -134,3 +145,24 @@ const drawTasksList = () => {
 };
 
 drawTasksList();
+
+// sort by name
+document.getElementById("sortByName").addEventListener("click", function () {
+  sortByName = !sortByName;
+
+  sortByName ? this.classList.add("active") : this.classList.remove("active");
+
+  drawTasksList();
+});
+// sort by time
+document
+  .getElementById("sortByStartTime")
+  .addEventListener("click", function () {
+    sortByStartTime = !sortByStartTime;
+
+    sortByStartTime
+      ? this.classList.add("active")
+      : this.classList.remove("active");
+
+    drawTasksList();
+  });
