@@ -1,34 +1,42 @@
-let arr = [
-  {
-    id: 123,
-    task: "make a list",
-  },
-  {
-    id: 124,
-    task: "do dishes",
-  },
-  {
-    id: 125,
-    task: "learn js",
-  },
-  {
-    id: 126,
-    task: "make bread",
-  },
-];
+// let arr = [
+//   {
+//     id: 123,
+//     task: "make a list",
+//   },
+//   {
+//     id: 124,
+//     task: "do dishes",
+//   },
+//   {
+//     id: 125,
+//     task: "learn js",
+//   },
+//   {
+//     id: 126,
+//     task: "make bread",
+//   },
+// ];
 const addTask = () => {
   const inputValue = document.getElementById("taskInput").value;
   const input = document.getElementById("taskInput");
+
   if (!inputValue.trim()) {
     alert("Please add a task");
     input.value = null;
     return;
   }
+
   const newTask = {
     id: new Date().getTime(),
     task: inputValue,
   };
+
+  const lsArr = JSON.parse(window.localStorage.getItem("tasks"));
+  let arr = lsArr ? lsArr : [];
   arr.push(newTask);
+
+  window.localStorage.setItem("tasks", JSON.stringify(arr));
+
   input.value = null;
   drawTasksList();
 };
@@ -45,6 +53,12 @@ document.getElementById("taskInput").addEventListener("keypress", (e) => {
 const drawTasksList = () => {
   const tasksList = document.getElementById("tasksList");
   tasksList.innerHTML = null;
+
+  // get data from local storage
+
+  const lsArr = JSON.parse(window.localStorage.getItem("tasks"));
+  let arr = lsArr ? lsArr : [];
+
   arr.forEach((value, ind) => {
     // created elements
     const myLi = document.createElement("li");
@@ -60,6 +74,7 @@ const drawTasksList = () => {
     myLi.className = "list-group-item";
     myInput.className = "form-check-input me-1";
     myLabel.className = "form-check-label col-9";
+
     btnGroup.className = "btn-group col-2";
     deleteBtn.className = "btn bg-danger text-light btn-sm ";
     editBtn.className = "btn btn-outline-danger btn-sm";
@@ -89,9 +104,10 @@ const drawTasksList = () => {
     myLi.append(myInput, myLabel, btnGroup);
     tasksList.append(myLi);
 
-    //task events
+    //task events = delete
     deleteBtn.addEventListener("click", () => {
       arr = arr.filter((val) => val.id !== value.id);
+      window.localStorage.setItem("tasks", JSON.stringify(arr));
       drawTasksList();
     });
 
@@ -108,6 +124,9 @@ const drawTasksList = () => {
         };
 
         arr.splice(ind, 1, newTask);
+
+        window.localStorage.setItem("tasks", JSON.stringify(arr));
+
         drawTasksList();
       }
     });
